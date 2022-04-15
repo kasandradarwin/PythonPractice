@@ -3,7 +3,7 @@ rate = float(input("Enter your rate: "))
 
 basePay = hours*rate
 
-if hours < 40:
+if hours <+ 40:
   print("Your pay is: ", basePay)
 
 if hours > 40:
