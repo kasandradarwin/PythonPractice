@@ -1,0 +1,9 @@
+fruit = 'banana'
+length = len(fruit)
+start = length - 1
+index = -1
+
+while index < start:
+  letter = fruit[start]
+  start = start - 1
+  print(letter)
