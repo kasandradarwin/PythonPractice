@@ -1,3 +1,1 @@
-word = 'banana'
-wordCount = word.count('na')
-print(wordCount)
+print('welcome to python')
