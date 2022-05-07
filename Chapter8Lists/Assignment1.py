@@ -11,9 +11,14 @@ try:
   fh = open(fname)
 except:
     print(fname, "is not a valid file name. Please try again")
-
+    quit()
 for line in fh:
     lst = list()
-    lst = line.split()
-    lst.sort()
-print(lst)
+    line = line.rstrip()
+    word = line.split()
+    word.sort()
+    if word not in line:
+        lst.append()
+
+
+print(word)
