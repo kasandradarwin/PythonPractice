@@ -12,15 +12,11 @@ except:
     print("Oops! Please try again, we couldn't find",name)
 counter = dict()
 for line in handle:
-    if not line.startswith('from '): #pulls out lines starting with from,splits the line, pulls out day of week
+    if not line.startswith('From '): #pulls out lines starting with from,splits the line, pulls out day of week
         continue
     words = line.split()
-    words = words[2:3] # print out day of the week the commit was done
-    for word in words: #filters out duplicates and increases the count for that word instead
-        counter[word] = counter.get(word,0) +1
+    splitwords = words[2:3] # print out day of the week the commit was done
+    for word in splitwords: #filters out duplicates and increases the count for that word instead
+        counter[word] = counter.get(word,0) + 1
 
-#printing the email of the person who sent the most emails, as well as the count
-
-print(counter.items())
-
-#print(emailer, emailsent)
+print(counter)
