@@ -3,7 +3,7 @@
 # each of the days of the week. At the end of the program, print out the contents of your dictionary (order does not matter)
 
 
-name = input("Enter file: ") #open the file, add exception handling in case of file error.
+name = input("Enter file: ") #open the file, handle exceptions
 if len(name) < 1:
     name = "mbox-short.txt"
 try:
@@ -21,6 +21,6 @@ for line in handle:
 
 #printing the email of the person who sent the most emails, as well as the count
 
-print(counter.items())
+print(counter.values())
 
 #print(emailer, emailsent)
