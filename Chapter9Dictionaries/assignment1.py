@@ -17,12 +17,12 @@ except:
     print("Oops! Please try again, we couldn't find",name)
 counter = dict()
 for line in handle:
-    if not line.startswith('From'): #pulls out lines starting with From, splits the words up.
+    if not line.startswith('From:'): #pulls out lines starting with From, splits the words up.
         continue
     words = line.split()
     words = words[1:2] # print only the email address and eliminates the rest of the line
 
-    for word in words: #filters out duplicates and increases the count for that word instead
+    for word in words: #filters out duplicates and increments the count for that word instead
         counter[word] = counter.get(word,0) +1
 
 #printing the email of the person who sent the most emails, as well as the count

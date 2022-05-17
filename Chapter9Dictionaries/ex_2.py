@@ -4,7 +4,7 @@
 
 
 name = input("Enter file: ") #open the file, add exception handling in case of file error.
-if len(name) < 1: 
+if len(name) < 1:
     name = "mbox-short.txt"
 try:
     handle = open(name)
@@ -12,19 +12,15 @@ except:
     print("Oops! Please try again, we couldn't find",name)
 counter = dict()
 for line in handle:
-    if not line.startswith('From'): #pulls out lines starting with From, splits the words up.
+    if not line.startswith('from '): #pulls out lines starting with from,splits the line, pulls out day of week
         continue
     words = line.split()
-    words = words[1:2] # print only the email address and eliminates the rest of the line
-
+    words = words[2:3] # print out day of the week the commit was done
     for word in words: #filters out duplicates and increases the count for that word instead
         counter[word] = counter.get(word,0) +1
 
 #printing the email of the person who sent the most emails, as well as the count
-emailer = None
-emailsent = -1
-for ky,val in counter.items():
-    if val > emailsent:
-        emailsent = val
-        emailer = ky
-print(emailer, emailsent)
+
+print(counter.items())
+
+#print(emailer, emailsent)
