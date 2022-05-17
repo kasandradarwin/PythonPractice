@@ -21,6 +21,6 @@ for line in handle:
 
 #printing the email of the person who sent the most emails, as well as the count
 
-print(counter.values())
+print(counter.items())
 
 #print(emailer, emailsent)
