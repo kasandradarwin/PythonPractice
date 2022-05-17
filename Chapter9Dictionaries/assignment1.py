@@ -8,7 +8,7 @@
 #After the dictionary is produced, the program reads through the dictionary
 #using a maximum loop to find he most prolific committer.
 
-name = input("Enter file: ")
+name = input("Enter file: ") #open the file, add exception handling in case of file error.
 if len(name) < 1:
     name = "mbox-short.txt"
 try:
@@ -17,10 +17,19 @@ except:
     print("Oops! Please try again, we couldn't find",name)
 counter = dict()
 for line in handle:
-    if not line.startswith('From'):
+    if not line.startswith('From'): #pulls out lines starting with From, splits the words up.
         continue
     words = line.split()
-    words = words[1:2]
+    words = words[1:2] # print only the email address and eliminates the rest of the line
 
-    for word in words:
-        counter[word] = counter.get(word,1) +1
+    for word in words: #filters out duplicates and increases the count for that word instead
+        counter[word] = counter.get(word,0) +1
+
+#printing the email of the person who sent the most emails, as well as the count
+emailer = None
+emailsent = -1
+for ky,val in counter.items():
+    if val > emailsent:
+        emailsent = val
+        emailer = ky
+print(emailer, emailsent)
