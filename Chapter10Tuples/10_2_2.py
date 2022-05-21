@@ -16,11 +16,8 @@ for line in handle:
     if line.startswith( "From "):
         word = line.split()
         time = word[5]
-        #print("time",time)
         time = time.split(delimiter)
-        #print("time with delimited split",time)
         hour = time[0]
-        #print("hour",hour)
 
 
         if hour not in count:
