@@ -9,10 +9,13 @@ name = input("Enter file:")
 if len(name) < 1:
     name = "mbox-short.txt"
 handle = open(name)
-
+counts = dict()
+delimiter = ':'
 for line in handle:
-    if line not startswith "From ":
+    if not line.startswith( "From "):
         continue
     for word in line:
-        word = word.split()
-    print(word)
+        word = line.split()
+        hour = word[5].split(delimiter)
+
+        print(hour)
