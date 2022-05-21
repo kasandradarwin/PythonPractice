@@ -19,8 +19,14 @@ for line in handle:
         time = word[5].split(delimiter)
     for hour in time:
         if hour not in count:
-            count[time] = 1
+            count[hour] = 1
         else:
-            count[time] += 1
+            count[hour] += 1
+lst = list()
+for k, v in list(count.items()):
+    lst.append((k,v))
 
-        print(counts.items())
+lst.sort()
+
+for k, v in lst:
+    print(k,v)
