@@ -4,7 +4,6 @@
 #From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
 #Once you have accumulated the counts for each hour, print out the counts, sorted by hour as shown below.
 
-
 name = input("Enter file:")
 if len(name) < 1:
     name = "mbox-short.txt"
@@ -14,28 +13,24 @@ lst = list()
 
 delimiter = ':'
 for line in handle:
-    if not line.startswith( "From ") :
-        continue
-    for word in line:
+    if line.startswith( "From "):
         word = line.split()
-        time = word[5].split(delimiter)
-        time = time[0]
-        if time not in count:
-            #print("time", time[0])
-            count[time] = 1
+        time = word[5]
+        #print("time",time)
+        time = time.split(delimiter)
+        #print("time with delimited split",time)
+        hour = time[0]
+        #print("hour",hour)
+
+
+        if hour not in count:
+            count[hour] = 1
         else:
-            count[time] += 1
+            count[hour] += 1
 
-    #print("hour:",hour)
-    #print("time:",time[0])
+for k,v in list(count.items()):
+    lst.append((k,v))
 
-for v,k in list(count.items()):
-    lst.append((v,k))
-    print(lst.sort())
-
-    print(v,k)
-
-#lst.sort()
-
-
-#print(lst)
+lst.sort()
+for k,v in lst:
+    print(k,v)
