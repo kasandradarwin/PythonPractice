@@ -5,13 +5,15 @@ import re
 
 x = input(" Please enter a RegEx, eg '^Author': ")
 file = open("mbox-short.txt")
-
+count = 0
 try:
     for line in file:
         line = line.rstrip()
         result = re.findall(x,line)
-        if len(result) > 0:    
-            print(result)
+        for match in line:
+            if len(result) > 0:
+                count = count + 1
+    print("mbox.txt had", count, "lines that matched", x)
 
 
 except:
