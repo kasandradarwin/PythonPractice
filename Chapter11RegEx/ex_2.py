@@ -3,13 +3,11 @@
 
 import re
 
-x = input ("Please enter a File name (hint 1 = mbox, 2 = mbox-short): ")
+x = input ("Please enter a File name (1 = mbox, 2 = mbox-short): ")
 
-if x == 1 or x == "mbox.txt":
+if x == '1': # or x == "mbox.txt":
     file = open("mbox.txt")
-
-elif x == 2 or x == "mbox-short.txt":
+elif x == '2':  #or x == "mbox-short.txt":
     file = open("mbox-short.txt")
-
 else:
     print(x, "is not valid. Please try again.")
