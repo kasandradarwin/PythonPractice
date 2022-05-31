@@ -4,7 +4,7 @@
 import re
 
 x = input("Please enter a RegEx, eg '^Author': ") #gets input from user to use as regex
-file = open("mbox-short.txt")
+file = open("mbox.txt")
 count = 0
 for line in file:
     line = line.rstrip()
@@ -12,4 +12,4 @@ for line in file:
     if len(find) > 0:
         count+=1 #counts each match
 
-print("mbox.txt had", count, "lines that matched", x)
+print("mbox.txt had", count, "lines that matched", x) #prints total
