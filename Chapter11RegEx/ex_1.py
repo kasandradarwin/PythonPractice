@@ -3,25 +3,13 @@
 
 import re
 
-x = input("Please enter a RegEx, eg '^Author': ")
+x = input("Please enter a RegEx, eg '^Author': ") #gets input from user to use as regex
 file = open("mbox-short.txt")
 count = 0
-try:
-    for line in file:
-        line = line.rstrip()
-        print("line: ",line)
-        print ("x: ", x)
-        result = re.findall(x,line)
-        #print("result: ",result)
-        for word in line:
-            print("count pre len: ", count)
-            if len(line) > 0:
-                count += 1
-                print("count post len: ", count)
+for line in file:
+    line = line.rstrip()
+    find = re.findall(x, line) #uses the users input, searches for it in each line of the file
+    if len(find) > 0:
+        count+=1 #counts each match
 
-    #print("mbox.txt had", count, "lines that matched", x)
-
-
-
-except:
-    print(x, "not found. Please check your Regular Expression and try again")
+print("mbox.txt had", count, "lines that matched", x)
