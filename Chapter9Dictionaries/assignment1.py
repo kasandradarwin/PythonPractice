@@ -8,7 +8,7 @@
 #After the dictionary is produced, the program reads through the dictionary
 #using a maximum loop to find he most prolific committer.
 
-name = input("Enter file: ") #open the file, add exception handling in case of file error.
+name = input("Enter file: ") #open the file, add exception handling
 if len(name) < 1:
     name = "mbox-short.txt"
 try:
