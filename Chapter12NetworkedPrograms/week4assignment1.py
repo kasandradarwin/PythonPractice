@@ -10,6 +10,8 @@
 # and unzip it in the same directory as this file
 
 from urllib.request import urlopen
+#from bs4 import BeautifulSoup
+import bs4
 from bs4 import BeautifulSoup
 import ssl
 
@@ -26,10 +28,17 @@ soup = BeautifulSoup(html, "html.parser")
 
 # Retrieve all of the anchor tags
 tags = soup('span')
+sum = 0
+tagSum = 0
 for tag in tags:
+    tagSum = tag.contents[0]
+    sum += int(tagSum)
+print("sum: ", sum)
+
+
     # Look at the parts of a tag
-    print(line.decode().strip())
-    print('TAG:', tag)
-    print('URL:', tag.get('href', None))
-    print('Contents:', tag.contents[0])
-    print('Attrs:', tag.attrs)
+    #print(line.decode().strip())
+    #print('TAG:', tag)
+    #print('URL:', tag.get('href', None))
+    #print('Contents:', tag.contents[0])
+    #print('Attrs:', tag.attrs)
