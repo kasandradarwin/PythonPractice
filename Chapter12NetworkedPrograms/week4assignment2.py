@@ -11,33 +11,48 @@ ctx = ssl.create_default_context()
 ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
-url = input('Enter - ')
-html = urllib.request.urlopen(url, context=ctx).read()
-soup = BeautifulSoup(html, 'html.parser')
+#url = input('Enter - ')
+firstClickUrl =  "http://py4e-data.dr-chuck.net/known_by_Fikret.html"
+#html = urllib.request.urlopen(url, context=ctx).read()
 
-countInput = input('Enter Count: ')
+
+timesToRepeat = input('Repeat how many times?: ')
 positionInput = input('Enter Position: ')
 try:
-    countInput = int(countInput)
+    timesToRepeat = int(timesToRepeat)
     positionInput = int(positionInput)
 except:
     print("please add an number")
     quit()
 
+# Retrieve all of the anchor tags
+#for i in range(timesToRepeat):
 count = 0
 
-# Retrieve all of the anchor tags
-tags = soup('a')
-
-for i in range(countInput):
-    html = urllib.request.urlopen(url, context=ctx).read()
+def getLink(positionInput,target):
+    html = urllib.request.urlopen(target, context=ctx).read()
     soup = BeautifulSoup(html, 'html.parser')
+    tags = soup('a')
     for tag in tags:
         count += 1
-        #print("COUNT: ", count)
-        #print('TAG:', tag)
+        if count == positionInput:
+            url = tag.get('href', None)
+    #print(url)
+    return(url)
 
-        if count > positionInput:
-            break
-        link= tag.get('href', None)
-        print("Retrieving:", link)
+while count < (timesToRepeat + 1):
+    print(getLink(positionInput,url))
+
+#print(firstClickUrl)
+#for i in range(timesToRepeat):
+    #linkToPrint = getLink(positionInput,)
+    #subsequentLink =  getLink(positionInput,firstClickUrl)
+    #thirdLink = getLink(positionInput,subsequentLink)
+    #fourthLink = getLink(positionInput,thirdLink)
+    #fifthLink = getLink(positionInput,fourthLink)
+
+#print(subsequentLink)
+#print(thirdLink)
+#print(fourthLink)
+#print(fifthLink)
+    #print(subsequentLink)
