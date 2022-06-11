@@ -17,14 +17,19 @@ soup = BeautifulSoup(html, 'html.parser')
 
 countInput = input('Enter Count: ')
 positionInput = input('Enter Position: ')
-countInput = int(countInput)
-positionInput = int(positionInput)
+try:
+    countInput = int(countInput)
+    positionInput = int(positionInput)
+except:
+    print("please add an number")
+    quit()
+
 count = 0
 
 # Retrieve all of the anchor tags
 tags = soup('a')
 
-for i in range(positionInput):
+for i in range(countInput):
     html = urllib.request.urlopen(url, context=ctx).read()
     soup = BeautifulSoup(html, 'html.parser')
     for tag in tags:
