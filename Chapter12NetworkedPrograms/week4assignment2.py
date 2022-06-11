@@ -13,9 +13,6 @@ ctx.verify_mode = ssl.CERT_NONE
 
 #url = input('Enter - ')
 firstClickUrl =  "http://py4e-data.dr-chuck.net/known_by_Fikret.html"
-#html = urllib.request.urlopen(url, context=ctx).read()
-
-
 timesToRepeat = input('Repeat how many times?: ')
 positionInput = input('Enter Position: ')
 try:
@@ -28,8 +25,11 @@ except:
 # Retrieve all of the anchor tags
 #for i in range(timesToRepeat):
 count = 0
+html = urllib.request.urlopen(url, context=ctx).read()
+soup = BeautifulSoup(html, 'html.parser')
 
-def getLink(positionInput,target):
+print("retrieving",firstClickUrl)
+#def getLink(positionInput,target):
     html = urllib.request.urlopen(target, context=ctx).read()
     soup = BeautifulSoup(html, 'html.parser')
     tags = soup('a')
@@ -39,20 +39,7 @@ def getLink(positionInput,target):
             url = tag.get('href', None)
     #print(url)
     return(url)
+subsequentUrl = getlink
 
 while count < (timesToRepeat + 1):
     print(getLink(positionInput,url))
-
-#print(firstClickUrl)
-#for i in range(timesToRepeat):
-    #linkToPrint = getLink(positionInput,)
-    #subsequentLink =  getLink(positionInput,firstClickUrl)
-    #thirdLink = getLink(positionInput,subsequentLink)
-    #fourthLink = getLink(positionInput,thirdLink)
-    #fifthLink = getLink(positionInput,fourthLink)
-
-#print(subsequentLink)
-#print(thirdLink)
-#print(fourthLink)
-#print(fifthLink)
-    #print(subsequentLink)
