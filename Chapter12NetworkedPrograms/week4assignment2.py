@@ -20,29 +20,19 @@ positionInput = input('Enter Position: ')
 countInput = int(countInput)
 positionInput = int(positionInput)
 count = 0
-position = 0
 
 # Retrieve all of the anchor tags
 tags = soup('a')
 
-while count < (countInput + 1):
-    for tag[positionInput] in tags:
-        html = urllib.request.urlopen(url, context=ctx).read()
-        soup = BeautifulSoup(html, 'html.parser')
-        for tag in tags:
-            count += 1
-            #print("COUNT: ", count)
-            #print('TAG:', tag)
-            link= tag.get('href', None)
-            print("Retriving:", link)
+for i in range(positionInput):
+    html = urllib.request.urlopen(url, context=ctx).read()
+    soup = BeautifulSoup(html, 'html.parser')
+    for tag in tags:
+        count += 1
+        #print("COUNT: ", count)
+        #print('TAG:', tag)
 
-        #print('Contents:', tag.contents)
-        #print('Attrs:', tag.attrs)
-
-#tags = soup('span')
-#sum = 0
-#tagSum = 0
-#for tag in tags:
-#    tagSum = tag.contents[0]
-#    sum += int(tagSum)
-#print("sum: ", sum)
+        if count > positionInput:
+            break
+        link= tag.get('href', None)
+        print("Retrieving:", link)
