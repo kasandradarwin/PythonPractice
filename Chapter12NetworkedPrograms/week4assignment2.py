@@ -38,8 +38,9 @@ html = urllib.request.urlopen(url, context=ctx).read()
 #extracting the following 4
 
 for i in range(timesToRepeat+timesToRepeat):
+    print("Retrieving: ",url)
     soup = BeautifulSoup(html, 'html.parser')
     tag = soup.select('a')[positionInput-1]
     html = urllib.request.urlopen(url, context=ctx).read()
     url = tag.get('href')
-    print("Retrieving: ",url)
+    
