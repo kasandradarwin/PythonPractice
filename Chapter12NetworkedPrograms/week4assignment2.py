@@ -12,7 +12,7 @@ ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
 #url = input('Enter - ')
-firstClickUrl =  "http://py4e-data.dr-chuck.net/known_by_Fikret.html"
+url =  "http://py4e-data.dr-chuck.net/known_by_Fikret.html"
 timesToRepeat = input('Repeat how many times?: ')
 positionInput = input('Enter Position: ')
 try:
@@ -24,22 +24,28 @@ except:
 
 # Retrieve all of the anchor tags
 #for i in range(timesToRepeat):
-count = 0
+iterationCount = 0
+totalCount = 0
 html = urllib.request.urlopen(url, context=ctx).read()
 soup = BeautifulSoup(html, 'html.parser')
+tags = soup('a')
+subseqentUrl = None
+subsequentLinks = []
+print("Retrieving: ",url)
 
-print("retrieving",firstClickUrl)
-#def getLink(positionInput,target):
-    html = urllib.request.urlopen(target, context=ctx).read()
-    soup = BeautifulSoup(html, 'html.parser')
-    tags = soup('a')
+for i in range(timesToRepeat):
+    iterationCount += 1
     for tag in tags:
-        count += 1
-        if count == positionInput:
-            url = tag.get('href', None)
-    #print(url)
-    return(url)
-subsequentUrl = getlink
+        subsequentLinks.append(tag.get('href', None))
+        html = urllib.request.urlopen(url, context=ctx).read()
+    #iterationCount += 1
+        while totalCount < (timesToRepeat + 1):
+            if url != None:
 
-while count < (timesToRepeat + 1):
-    print(getLink(positionInput,url))
+                if iterationCount == positionInput:
+                    totalCount += 1
+                    url = tag.get('href', None)
+            #iterationCount = (iterationCount - timesToRepeat)
+
+
+#while count < (timesToRepeat + 1):
