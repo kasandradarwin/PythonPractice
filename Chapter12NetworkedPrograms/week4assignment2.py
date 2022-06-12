@@ -5,7 +5,6 @@
 import urllib.request, urllib.parse, urllib.error
 from bs4 import BeautifulSoup
 import ssl
-#import requests
 
 # Ignore SSL certificate errors
 ctx = ssl.create_default_context()
@@ -16,6 +15,9 @@ ctx.verify_mode = ssl.CERT_NONE
 url =  "http://py4e-data.dr-chuck.net/known_by_Fikret.html"
 timesToRepeat = '4'
 positionInput = '3'
+# url =  "http://py4e-data.dr-chuck.net/known_by_Scott.html"
+# timesToRepeat = '7'
+# positionInput = '18'
 #timesToRepeat = input('Repeat how many times?: ')
 #positionInput = input('Enter Position: ')
 try:
@@ -26,34 +28,18 @@ except:
     quit()
 
 # Retrieve all of the anchor tags
-totalCount = 0
-currentRepetitionCount = 0
 
+# extracting the first link:
 html = urllib.request.urlopen(url, context=ctx).read()
-soup = BeautifulSoup(html, 'html.parser')
-print("Retrieving: ",url)
+#soup = BeautifulSoup(html, 'html.parser')
 #tags = soup('a')
 
 #Leave this all alone ^^^^
+#extracting the following 4
 
-for i in range(timesToRepeat+1):
-    #soup=BeautifulSoup(requests.get(url).text)
+for i in range(timesToRepeat+timesToRepeat):
     soup = BeautifulSoup(html, 'html.parser')
-    tag = soup.select('a')[positionInput]
+    tag = soup.select('a')[positionInput-1]
     html = urllib.request.urlopen(url, context=ctx).read()
     url = tag.get('href')
     print("Retrieving: ",url)
-    # #html = urllib.request.urlopen(url, context=ctx).read()
-    # for tag in tags:
-    #     currentRepetitionCount += 1
-    #
-    #     if not totalCount >= timesToRepeat:
-    #         if currentRepetitionCount == positionInput:
-    #             #print("current",currentRepetitionCount)
-    #             #print("total",totalCount)
-    #             #print("Retrieving: ",url)
-    #             currentRepetitionCount = 0
-    #             totalCount +=1
-    #             url = tag.get('href', None)
-    #
-    #             print("Retrieving: ",url)
