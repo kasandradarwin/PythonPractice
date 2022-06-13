@@ -18,28 +18,26 @@ ctx = ssl.create_default_context()
 ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
-#open the link and pull out the count(s)
+#open the link. If link cannot be opened return an error message.
 try:
     linkOpener = urllib.request.urlopen(url, context=ctx)
 except:
     print("Error: Please use a URL")
     quit()
 
-#print("link opener ",linkOpener.read())
+#read link and convert string to data tree
 tree = ET.fromstring(linkOpener.read())
-#print(linkOpener.decode())
-#countList = tree.findall('commentinfo/comments/comment/count')
+
+#find the child at comment info > comments > comment > count
+#initialize variable to found each iteration, and sum all the numbers
 countList = tree.findall('.//count')
 sum = 0
 numberofitems = 0
+
+# for every item in the list, pull the value out, count the number of iterations
 for item in countList:
     eachCount = (item.text)
     numberofitems += 1
     sum = sum + int(eachCount)
 print("Count: ", numberofitems)
 print("Sum: ", sum)
-    #sum = sum + int(eachCount)
-    #print(sum)
-# data = linkOpener.read()
-# print('Retrieved', len(data), 'characters')
-# print(data.decode())
