@@ -7,7 +7,9 @@ import ssl
 # api_key = 'AIzaSy___IDByT70'
 # https://developers.google.com/maps/documentation/geocoding/intro
 
-url = 'http://py4e-data.dr-chuck.net/comments_42.xml'
+#url = 'http://py4e-data.dr-chuck.net/comments_42.xml'
+#url = 'http://py4e-data.dr-chuck.net/comments_1527516.xml'
+url = input("Enter a URL -")
 print('Retrieving:', url)
 
 
@@ -17,19 +19,27 @@ ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
 #open the link and pull out the count(s)
-linkOpener = urllib.request.urlopen(url, context=ctx)
+try:
+    linkOpener = urllib.request.urlopen(url, context=ctx)
+except:
+    print("Error: Please use a URL")
+    quit()
 
 #print("link opener ",linkOpener.read())
 tree = ET.fromstring(linkOpener.read())
 #print(linkOpener.decode())
 #countList = tree.findall('commentinfo/comments/comment/count')
 countList = tree.findall('.//count')
+sum = 0
+numberofitems = 0
 for item in countList:
-    print('Count',item.text)
+    eachCount = (item.text)
+    numberofitems += 1
+    sum = sum + int(eachCount)
+print("Count: ", numberofitems)
+print("Sum: ", sum)
+    #sum = sum + int(eachCount)
+    #print(sum)
 # data = linkOpener.read()
 # print('Retrieved', len(data), 'characters')
 # print(data.decode())
-# tree = ET.fromstring(data)
-
-print("tree: ",tree)
-#print("counts: ",counts)
