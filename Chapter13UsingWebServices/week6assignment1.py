@@ -14,20 +14,29 @@ ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
 try:
-    linkOpener = urllib.request.urlopen(url, context=ctx)
-    data = linkOpener.read().decode()
-    nice = json.loads(data)
-    print("data",data)
-
+    linkOpener= urllib.request.urlopen(url, context=ctx)
+    info = linkOpener.read()
+    data = json.loads(info)
 
 except:
-     print("PC Load letter? WTF does that mean?")
+     print("PC load letter? WTF does that mean?")
      quit()
+#print("data",data)
+print('Retrieved:', len(info), 'characters')
 
-print('Retrieved:', len(data), 'characters')
+sum = 0
+#print("data", data)
+for line in data:
+    print("data",data)
+    #print('Count', line["count"])
+    print("line: ",line)
 
-#for line in data:
-#      print('Count', line['count'])
+
+    #print('Name', line['name'])
+
+print(sum)
+
+
      #print('Id', item['id'])
      #print('Attribute', item['x'])
 
