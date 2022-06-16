@@ -2,9 +2,9 @@ import urllib.request, urllib.parse, urllib.error
 import xml.etree.ElementTree as ET
 import ssl
 
-url = 'http://py4e-data.dr-chuck.net/comments_42.xml'
+#url = 'http://py4e-data.dr-chuck.net/comments_42.xml'
 #url = 'http://py4e-data.dr-chuck.net/comments_1527516.xml'
-#url = input("Enter a URL -")
+url = input("Enter a URL -")
 print('Retrieving:', url)
 
 
