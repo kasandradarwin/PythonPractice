@@ -27,12 +27,19 @@ print('Retrieved:', len(info), 'characters')
 #numbers['count'] = count
 sum = 0
 #print("data", data)
-data = json.loads(data)
+data = json.loads(info)
 
-if 'count' in info:
-    print('yep, found it')
-else:
-    print('nope, its not here')
+#this will print like the "data" examples in the textbook"
+
+comments = ('Comments', data['comments'])
+
+print(comments)
+
+
+# if 'count' in info:
+#     print('yep, found it')
+# else:
+#     print('nope, its not here')
 # number = ('Count',data['count'])
 # print(number)
 
