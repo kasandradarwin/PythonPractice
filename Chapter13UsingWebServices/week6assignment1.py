@@ -16,7 +16,7 @@ ctx.verify_mode = ssl.CERT_NONE
 try:
     linkOpener= urllib.request.urlopen(url, context=ctx)
     info = linkOpener.read()
-    data = json.loads(info)
+
 
 except:
      print("PC load letter? WTF does that mean?")
@@ -24,19 +24,27 @@ except:
 #print("data",data)
 print('Retrieved:', len(info), 'characters')
 
+#numbers['count'] = count
 sum = 0
 #print("data", data)
-for line in data:
-    print("data",data)
-    #print('Count', line["count"])
-    print("line: ",line)
+data = json.loads(data)
+
+if 'count' in info:
+    print('yep, found it')
+else:
+    print('nope, its not here')
+# number = ('Count',data['count'])
+# print(number)
+
+# for line in data:
+#     #print("line: ",line)
+#     number = ('Count',data['count'])
+#     print(number)
+
+
 
 
     #print('Name', line['name'])
-
-print(sum)
-
-
      #print('Id', item['id'])
      #print('Attribute', item['x'])
 
