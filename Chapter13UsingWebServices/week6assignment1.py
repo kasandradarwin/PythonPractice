@@ -2,61 +2,42 @@ import json
 import urllib.request, urllib.parse, urllib.error
 import ssl
 
-
-#url = input(print("Please enter a URL"))
-url = 'http://py4e-data.dr-chuck.net/comments_42.json'
-print("Please enter a URL:",url)
-print('Retrieving:', url)
-
 # Ignore SSL certificate errors
 ctx = ssl.create_default_context()
 ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
+#url = input(print("Please enter a URL"))
+#url = 'http://py4e-data.dr-chuck.net/comments_42.json'
+url = 'http://py4e-data.dr-chuck.net/comments_1527517.json'
+
+
 try:
     linkOpener= urllib.request.urlopen(url, context=ctx)
     info = linkOpener.read()
 
-
 except:
      print("PC load letter? WTF does that mean?")
      quit()
-#print("data",data)
-print('Retrieved:', len(info), 'characters')
 
-#numbers['count'] = count
-sum = 0
-#print("data", data)
 data = json.loads(info)
+comments = data['comments']
+counter = 0
+counts = list()
+for comment in comments:
+    counts.append(comment['count'])
+    counter += 1
 
-#this will print like the "data" examples in the textbook"
-
-comments = ('Comments', data['comments'])
-
-print(comments)
-
-
-# if 'count' in info:
-#     print('yep, found it')
-# else:
-#     print('nope, its not here')
-# number = ('Count',data['count'])
-# print(number)
-
-# for line in data:
-#     #print("line: ",line)
-#     number = ('Count',data['count'])
-#     print(number)
+total = (sum(counts))
 
 
-
-
-    #print('Name', line['name'])
-     #print('Id', item['id'])
-     #print('Attribute', item['x'])
-
+print('Retrieving:', url)
+print('Retrieved:', len(info), 'characters')
+print('Count:', counter)
+print("Sum:", total)
 
 # Should look like:
+
 # $ python3 solution.py
 # Enter location: http://py4e-data.dr-chuck.net/comments_42.json
 # Retrieving http://py4e-data.dr-chuck.net/comments_42.json
