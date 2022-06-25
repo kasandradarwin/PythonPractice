@@ -1,5 +1,14 @@
-import re
+class PartyAnimal:
+    x=0
 
-x = 'From: Using the : character'
-y = re.findall('^F.+:', x)
-print(y)
+    def party(self) :
+        self.x = self.x + 1
+        print("so far", self.x)
+        print(self)
+
+an =PartyAnimal()
+an.party()
+an.party()
+an.party()
+PartyAnimal.party(an)
+print(self)

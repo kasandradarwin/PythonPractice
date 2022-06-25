@@ -18,49 +18,35 @@ else :
 ctx = ssl.create_default_context()
 ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
-print("1")
+
 #address = 'South Federal University' place id should be: ChIJNeHD4p-540AR2Q0_ZjwmKJ8
 
-while True:
-    print("2")
-    address = input('Enter location: ')
-    if len(address) < 1:
-        address = 'South Federal University'
+address = input('Enter location: ')
+if len(address) < 1:
+    address = 'South Federal University'
 
-    parms = dict()
-    parms['address'] = address #address type = string
-    if api_key is not False: parms['key'] = api_key
-    url = serviceurl + urllib.parse.urlencode(parms)
+parms = dict()
+parms['address'] = address #address type = string
+if api_key is not False: parms['key'] = api_key
+url = serviceurl + urllib.parse.urlencode(parms)
 
-    print('Retrieving', url)
-    uh = urllib.request.urlopen(url, context=ctx)
-    data = uh.read().decode()
-    print("3")
 
-    try:
-        js = json.loads(data)
-        dumpy = (json.dumps(js, indent=4))
-        print("4")
-        #print(dumpy)
+uh = urllib.request.urlopen(url, context=ctx)
+data = uh.read().decode()
 
-    except:
-        js = None
+try:
+    js = json.loads(data)
+    dumpy = (json.dumps(js, indent=4))
 
-    print("5")
+except:
+    js = None
 
-    counter = 0
-    print("6")
-    for item in dumpy:
-        #parms.append(js['place_id'])
-        counter += 1
-        print("7")
-        place_id = js['results'][0]['place_id']
-        print("8")
-        #lng = js['results'][0]['geometry']['location']['lng']
-        # print('lat', lat, 'lng', lng)
-        # print('Retrieved', len(data), 'characters')
-        # print("Place id = ", placeId)
-        #location = js['results'][0]['formatted_address']
-        print(place_id)
-        print(place_id)
-        print(place_id)
+counter = 0
+
+for item in dumpy:
+    counter += 1
+    place_id = js['results'][0]['place_id']
+print("counter",counter)
+print('Retrieving', url)
+print('Retrieved', len(data), 'characters')
+print("Place id", place_id)
