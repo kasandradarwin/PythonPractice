@@ -77,7 +77,7 @@ class TestWarnings(SoupTest):
     def test_no_warning_if_explicit_parser_specified(self):
         with warnings.catch_warnings(record=True) as w:
             soup = self.soup("<a><b></b></a>", "html.parser")
-        self.assertEquals([], w)
+        self.assertEqual([], w)
 
     def test_parseOnlyThese_renamed_to_parse_only(self):
         with warnings.catch_warnings(record=True) as w:
@@ -299,10 +299,11 @@ class TestUnicodeDammit(unittest.TestCase):
             dammit.unicode_markup, """<foo>''""</foo>""")
 
     def test_detect_utf8(self):
-        utf8 = b"\xc3\xa9"
+        utf8 = b"Sacr\xc3\xa9 bleu! \xe2\x98\x83"
         dammit = UnicodeDammit(utf8)
-        self.assertEqual(dammit.unicode_markup, '\xe9')
         self.assertEqual(dammit.original_encoding.lower(), 'utf-8')
+        self.assertEqual(dammit.unicode_markup, 'Sacr\xe9 bleu! \N{SNOWMAN}')
+
 
     def test_convert_hebrew(self):
         hebrew = b"\xed\xe5\xec\xf9"

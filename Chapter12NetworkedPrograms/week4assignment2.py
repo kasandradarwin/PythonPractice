@@ -15,12 +15,12 @@ url = input('Enter - ')
 timesToRepeat = input('Repeat how many times?: ')
 positionInput = input('Enter Position: ')
 
-# try:
+try:
     timesToRepeat = int(timesToRepeat)
     positionInput = int(positionInput)
-# except:
-#     print("please add an number")
-#     quit()
+except:
+    print("please add an number")
+    quit()
 
 # Retrieve all of the anchor tags
 
