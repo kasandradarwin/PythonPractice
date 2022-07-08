@@ -69,7 +69,7 @@ baseurl = "http://mbox.dr-chuck.net/sakai.devel/"
 
 cur.execute('''CREATE TABLE IF NOT EXISTS Messages
     (id INTEGER UNIQUE, email TEXT, sent_at TEXT,
-     subject TEXT, headers TEXT, body TEXT)''')
+     subject TEXT, headers TEXT, body TEXT, sender TEXT)''')
 
 # Pick up where we left off
 start = None
